@@ -4,13 +4,13 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * 调用本地接口
+ * 通过服务中心调用
  * @author univ
  * date 2025/9/16
  */
-// @FeignClient中的name(value)必不可少
-@FeignClient(name = "univLocalFeign", url = "127.0.0.1:8910")
-public interface UnivLocalFeign {
+// @FeignClient中的name(value)必不可少，此时 name就是服务中心中要被调用的服务的服务名
+@FeignClient(name = "module-web")
+public interface UnivNacosFeign {
 
     @GetMapping("/web/demo/hello")
     String hello();

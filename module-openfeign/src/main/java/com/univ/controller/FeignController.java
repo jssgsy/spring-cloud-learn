@@ -1,6 +1,7 @@
 package com.univ.controller;
 
 import com.univ.feign.UnivLocalFeign;
+import com.univ.feign.UnivNacosFeign;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +19,17 @@ public class FeignController {
     @Resource
     private UnivLocalFeign univLocalFeign;
 
-    @GetMapping("/say-hello")
-    public String sayHello() {
+    @Resource
+    UnivNacosFeign univNacosFeign;
+
+    @GetMapping("/say-hello-local")
+    public String sayHelloLocal() {
         return univLocalFeign.hello();
     }
+
+    @GetMapping("/say-hello-nacos")
+    public String sayHelloNacos() {
+        return univNacosFeign.hello();
+    }
+
 }
