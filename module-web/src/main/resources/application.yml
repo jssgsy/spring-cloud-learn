@@ -1,0 +1,16 @@
+server:
+  port: 8910
+  servlet:
+    context-path: /web
+
+spring:
+  application:
+    name: module-web
+  cloud:
+    nacos:
+      server-addr:  127.0.0.1:8848  # 指定nacos的地址
+      config:
+        namespace: dev  # 指定namespace，默认是public
+  config:
+    import:
+      - optional:nacos:univ-test.yaml
