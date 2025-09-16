@@ -1,0 +1,25 @@
+package com.univ.controller;
+
+import com.univ.feign.UnivLocalFeign;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+
+/**
+ * @author univ
+ * date 2025/9/16
+ */
+@RestController
+@RequestMapping("/feign")
+public class FeignController {
+
+    @Resource
+    private UnivLocalFeign univLocalFeign;
+
+    @GetMapping("/say-hello")
+    public String sayHello() {
+        return univLocalFeign.hello();
+    }
+}

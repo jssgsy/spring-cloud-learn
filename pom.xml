@@ -14,6 +14,7 @@
     <modules>
         <module>module-gateway</module>
         <module>module-web</module>
+        <module>module-openfeign</module>
     </modules>
 
     <!--父模块中定义的所有属性也会被子模块继承-->
