@@ -1,0 +1,16 @@
+server:
+  port: 8900
+
+spring:
+  application:
+    name: module-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: module_gateway_id # 路由ID，唯一即可
+          uri: http://localhost:8910 # 目标服务的实际地址
+          predicates:
+            - Path=/gateway/** # 断言：匹配路径
+          filters:
+            - StripPrefix=1
+            - AddRequestHeader=X-Request-Foo, Bar # 过滤器：添加一个请求头
